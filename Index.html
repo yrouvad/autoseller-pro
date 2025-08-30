@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoSeller Pro - Publication Multi-Plateformes</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-content">
+                <h1><i class="fas fa-rocket"></i> AutoSeller Pro</h1>
+                <p>Publication automatisée multi-plateformes</p>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <section class="upload-section">
+                <div class="upload-card">
+                    <div class="upload-area" id="uploadArea">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <h3>Glissez votre photo produit ici</h3>
+                        <p>ou <span class="upload-link">cliquez pour sélectionner</span></p>
+                        <input type="file" id="productImage" accept="image/*" hidden>
+                    </div>
+                    <div class="image-preview" id="imagePreview" style="display: none;">
+                        <img id="previewImg" alt="Aperçu produit">
+                        <button class="remove-image" id="removeImage">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="config-section">
+                <div class="config-grid">
+                    <div class="config-card">
+                        <h3><i class="fas fa-euro-sign"></i> Configuration Prix</h3>
+                        <div class="form-group">
+                            <label>Prix AliExpress (€)</label>
+                            <input type="number" id="aliPrice" placeholder="0.00" step="0.01">
+                        </div>
+                        <div class="form-group">
+                            <label>Coefficient de marge</label>
+                            <select id="marginCoef">
+                                <option value="1.8">1.8x (Marge basse)</option>
+                                <option value="2.0" selected>2.0x (Standard)</option>
+                                <option value="2.2">2.2x (Élevée)</option>
+                                <option value="2.5">2.5x (Premium)</option>
+                            </select>
+                        </div>
+                        <div class="price-preview">
+                            <h4>Prix calculés :</h4>
+                            <div class="price-list">
+                                <div class="price-item">
+                                    <span>Vinted :</span>
+                                    <span id="vintedPrice" class="price">--</span>
+                                </div>
+                                <div class="price-item">
+                                    <span>Pinterest :</span>
+                                    <span id="pinterestPrice" class="price">--</span>
+                                </div>
+                                <div class="price-item">
+                                    <span>Etsy :</span>
+                                    <span id="etsyPrice" class="price">--</span>
+                                </div>
+                                <div class="price-item">
+                                    <span>Leboncoin :</span>
+                                    <span id="leboncoinPrice" class="price">--</span>
+                                </div>
+                                <div class="price-item">
+                                    <span>eBay :</span>
+                                    <span id="ebayPrice" class="price">--</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="config-card">
+                        <h3><i class="fas fa-store"></i> Plateformes</h3>
+                        <div class="platform-grid">
+                            <label class="platform-item">
+                                <input type="checkbox" value="vinted" checked>
+                                <div class="platform-icon vinted">
+                                    <i class="fas fa-tshirt"></i>
+                                </div>
+                                <span>Vinted</span>
+                            </label>
+                            <label class="platform-item">
+                                <input type="checkbox" value="pinterest" checked>
+                                <div class="platform-icon pinterest">
+                                    <i class="fab fa-pinterest"></i>
+                                </div>
+                                <span>Pinterest</span>
+                            </label>
+                            <label class="platform-item">
+                                <input type="checkbox" value="etsy" checked>
+                                <div class="platform-icon etsy">
+                                    <i class="fas fa-shopping-bag"></i>
+                                </div>
+                                <span>Etsy</span>
+                            </label>
+                            <label class="platform-item">
+                                <input type="checkbox" value="leboncoin" checked>
+                                <div class="platform-icon leboncoin">
+                                    <i class="fas fa-handshake"></i>
+                                </div>
+                                <span>Leboncoin</span>
+                            </label>
+                            <label class="platform-item">
+                                <input type="checkbox" value="ebay" checked>
+                                <div class="platform-icon ebay">
+                                    <i class="fab fa-ebay"></i>
+                                </div>
+                                <span>eBay</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="description-section">
+                <div class="description-card">
+                    <h3><i class="fas fa-magic"></i> Générateur de Contenu</h3>
+                    <div class="form-group">
+                        <label>Nom du produit</label>
+                        <input type="text" id="productName" placeholder="Ex: T-shirt oversize vintage">
+                    </div>
+                    <div class="form-group">
+                        <label>Catégorie</label>
+                        <select id="category">
+                            <option value="">Sélectionnez une catégorie</option>
+                            <option value="fashion">Mode & Vêtements</option>
+                            <option value="home">Maison & Déco</option>
+                            <option value="tech">Technologie</option>
+                            <option value="beauty">Beauté & Soins</option>
+                            <option value="toys">Jouets & Enfants</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Points clés (un par ligne)</label>
+                        <textarea id="keyPoints" rows="3" placeholder="• Matière coton bio&#10;• Taille unique&#10;• Lavage 30°C"></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <section class="preview-section">
+                <h3><i class="fas fa-eye"></i> Aperçu des Annonces</h3>
+                <div class="preview-tabs">
+                    <button class="tab-btn active" data-tab="vinted">Vinted</button>
+                    <button class="tab-btn" data-tab="pinterest">Pinterest</button>
+                    <button class="tab-btn" data-tab="etsy">Etsy</button>
+                    <button class="tab-btn" data-tab="leboncoin">Leboncoin</button>
+                    <button class="tab-btn" data-tab="ebay">eBay</button>
+                </div>
+                
+                <div class="preview-content">
+                    <div class="preview-card active" id="vinted-preview">
+                        <h4>Titre Vinted</h4>
+                        <p id="vintedTitle" class="preview-text">--</p>
+                        <h4>Description</h4>
+                        <p id="vintedDesc" class="preview-text">--</p>
+                        <h4>Prix</h4>
+                        <p id="vintedPricePreview" class="preview-price">--</p>
+                    </div>
+                    
+                    <div class="preview-card" id="pinterest-preview">
+                        <h4>Titre Pinterest</h4>
+                        <p id="pinterestTitle" class="preview-text">--</p>
+                        <h4>Description</h4>
+                        <p id="pinterestDesc" class="preview-text">--</p>
+                    </div>
+                    
+                    <div class="preview-card" id="etsy-preview">
+                        <h4>Titre Etsy</h4>
+                        <p id="etsyTitle" class="preview-text">--</p>
+                        <h4>Description</h4>
+                        <p id="etsyDesc" class="preview-text">--</p>
+                        <h4>Prix</h4>
+                        <p id="etsyPricePreview" class="preview-price">--</p>
+                    </div>
+                    
+                    <div class="preview-card" id="leboncoin-preview">
+                        <h4>Titre Leboncoin</h4>
+                        <p id="leboncoinTitle" class="preview-text">--</p>
+                        <h4>Description</h4>
+                        <p id="leboncoinDesc" class="preview-text">--</p>
+                        <h4>Prix</h4>
+                        <p id="leboncoinPricePreview" class="preview-price">--</p>
+                    </div>
+                    
+                    <div class="preview-card" id="ebay-preview">
+                        <h4>Titre eBay</h4>
+                        <p id="ebayTitle" class="preview-text">--</p>
+                        <h4>Description</h4>
+                        <p id="ebayDesc" class="preview-text">--</p>
+                        <h4>Prix</h4>
+                        <p id="ebayPricePreview" class="preview-price">--</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="action-section">
+                <button class="btn btn-primary" id="generateBtn">
+                    <i class="fas fa-magic"></i> Générer les Annonces
+                </button>
+                <button class="btn btn-success" id="publishBtn" disabled>
+                    <i class="fas fa-paper-plane"></i> Publier sur les Plateformes
+                </button>
+            </section>
+        </main>
+
+        <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+            <div class="loading-spinner">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>Génération en cours...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
