@@ -9,7 +9,7 @@
     --secondary-color: #8b5cf6;
     --background: #f8fafc;
     --surface: #ffffff;
-    --text-primary: #000000;
+    --text-primary: #000000;   /* Texte noir en mode clair */
     --text-secondary: #4a5568;
     --border: #e2e8f0;
     --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
@@ -31,7 +31,7 @@ body {
 
 .app-header {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
+    color: #ffffff; /* Texte blanc sur header coloré */
     padding: 2rem 1.5rem;
     box-shadow: var(--shadow-lg);
 }
@@ -427,7 +427,7 @@ input:focus, select:focus, textarea:focus {
     :root {
         --background: #0f172a;
         --surface: #1e293b;
-        --text-primary: #ffffff;
+        --text-primary: #ffffff; /* Texte blanc en dark mode */
         --text-secondary: #94a3b8;
         --border: #334155;
     }
